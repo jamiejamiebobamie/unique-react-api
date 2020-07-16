@@ -12,10 +12,10 @@ import './Message.css'
 
 function Message(props){
     let content = null
-    if (props.message.contents !== undefined) {
+    if (props.message !== undefined) {
         content = (
               <h1 className="Message">
-                  {props.message.contents.translated}
+                  {props.message}
               </h1>
         )
     }

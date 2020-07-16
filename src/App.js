@@ -1,41 +1,64 @@
 import React, {Component} from 'react';
 import './App.css';
-import Error from './Error.js'
 import Message from './Message.js'
-
 
 class App extends Component {
     constructor(props){
         super(props)
         this.state = {
             isLoading: false,
-            data: null,
+            data: undefined,
             inputValue: '',
             error: undefined,
         }
+        this.getQuoteFromDB = this.getQuoteFromDB.bind(this);
     }
 
+    getQuoteFromDB(){
+        this.setState({isLoading:true})
+        const url = "http://localhost:7000/api/v1/quote"
+        // Get data from the API with fetch
+        fetch(url).then(res => {
+          // Handle the response stream as JSON
+          return res.json()
+        }).then((json) => {
+          this.setState({ data: json.quote })
+          this.setState({isLoading:false})
+        }).catch((err) => {
+          // If there is no data
+          this.setState({ data: null })
+          this.setState({error:undefined})
+
+          // Print an error to the console.
+          console.log('-- Error fetching --')
+          console.log(err.message)
+
+          // You may want to display an error to the screen here.
+              this.setState({isLoading:false})
+        })
+    }
 
   handleSubmit(e) {
     this.setState({isLoading:true})
     this.setState({error:undefined})
     e.preventDefault()
-    const text = this.state.inputValue
-    const shakespeareUrl = `https://api.funtranslations.com/translate/shakespeare.json?text=${text}`
-    // Form an API request URL with the apikey and zip
+    const data = this.state.inputValue
+    const url = "http://localhost:7000/api/v1/quote-from-input"
 
     // Get data from the API with fetch
-    fetch(shakespeareUrl).then(res => {
+    fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                }).then(res => {
       // Handle the response stream as JSON
       return res.json()
     }).then((json) => {
       // If the request was successful assign the data to component state
-      this.setState({ data: json })
+      console.log(this.state.data)
+      this.setState({ data: json.quote })
       this.setState({error:this.state.data.error})
 
-      // ! This needs better error checking here or at renderWeather()
-      // It's possible to get a valid JSON response that is not weather
-      // data, for example when a bad zip code entered.
       this.setState({isLoading:false})
     }).catch((err) => {
       // If there is no data
@@ -52,8 +75,6 @@ class App extends Component {
   }
 
     render(){
-        console.log(this.state.data, this.state.error, this.state.error === null && this.state.data)
-
         return (
           <div className="App">
               <h1 className="title">type something to speak like Shakespeare</h1>
@@ -72,7 +93,8 @@ class App extends Component {
                 />
                 <button type="submit">Submit</button>
                 </form>
-                {(this.state.error === undefined && this.state.data) ? <Message message={this.state.data} /> : <Error error={this.state.error} isLoading={this.state.isLoading}/>}
+                <button onClick={this.getQuoteFromDB}>generate quote from shakespeare's own words!</button>
+                { (this.state.data) ? <Message message={this.state.data} />: "" }
               </div>
 
             </div>
