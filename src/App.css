@@ -20,12 +20,14 @@ button{
     background-color: darkblue;
     border-color: lightblue;
     border-style: solid;
-    /* position: absolute;
-    right: 6.6vw;
-    top: 88vh; */
-    align-self: center;
     font-size: 3vh;
-    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+button:hover{
+    color: darkblue;
+    background-color: lightblue;
+    border-color: darkblue;
 }
 
 .boxes {
@@ -37,7 +39,7 @@ button{
   /* padding: inherit; */
   /* margin: auto; */
   /* overflow: hidden; */
-  margin-top:1vw;
+  margin-top:4vw;
   margin-bottom:auto;
   /* margin: auto; */
     /* bottom:auto; */
@@ -56,16 +58,17 @@ button{
 .input{
     width: 40vw;
     height: 50vh;
-    border-color: lightblue;
+    outline:none;
+    /* border-color: lightblue;
     border-style: solid;
-    border-width: medium;
+    border-width: medium; */
 }
 
 .output-Box{
     width: 50vw;
     height: 95vh;
-    border-color: lightblue;
-    border-style: solid;
+    /* border-color: lightblue;
+    border-style: solid; */
     overflow: scroll;
     font-size: 3vh;
 }
@@ -75,6 +78,10 @@ button{
     line-height: 1.6;
     letter-spacing: 1px;
     margin:3vw;
+    padding: 3vw;
+    /* border-radius: 1px;
+    border-color: grey;
+    border-width: thin; */
 }
 
 @media only screen and (min-width: 1000px){

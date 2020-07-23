@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import './App.css';
 
+import Error from './Error.js'
+import './Error.css';
+
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+
+
+let ipsum = "Two roads diverged in a yellow wood, And sorry I could not travel both And be one traveler, long I stood And looked down one as far as I could To where it bent in the undergrowth; Then took the other, as just as fair, And having perhaps the better claim, Because it was grassy and wanted wear; Though as for that the passing there Had worn them really about the same, And both that morning equally lay In leaves no step had trodden black. Oh, I kept the first for another day! Yet knowing how way leads on to way, I doubted if I should ever come back. I shall be telling this with a sigh Somewhere ages and ages hence:Two roads diverged in a wood, and I I took the one less traveled by, And that has made all the difference.";
 
 class App extends Component {
     constructor(props){
@@ -10,10 +17,10 @@ class App extends Component {
         this.state = {
             isLoading: false,
             data: "generated text will appear here",
-            inputTextValue: 'enter text here',
-            handleValue: '',
-            urlValue: 'enter a web address here',
-            authorValue: 'grimm',
+            inputTextValue: ipsum,
+            handleValue: '@Oprah',
+            urlValue: 'https://www.gutenberg.org/files/1342/1342-0.txt',
+            authorValue: 'shakespeare',
             error: undefined,
             tabIndex: 0,
         }
@@ -120,6 +127,7 @@ class App extends Component {
   }
 
   submitHandle(){
+      console.log("hey")
       this.setState({isLoading:true})
       this.setState({error:undefined})
       const handle = this.state.handleValue
@@ -225,12 +233,15 @@ class App extends Component {
         return (
           <div className="App">
               <div className="boxes">
-                <div className="output-Box">
-                    <div className="output">{this.state.data}</div>
-                </div>
+              {
+                  (this.state.isLoading) ?
+                    <div className="output-Box"><Error error={this.state.weatherData} isLoading={this.state.isLoading}/></div> :
+                    <div className="output-Box"> <div className="output">{this.state.data}</div></div>
+            }
+            <div className="output-Box">
               <div className="input-Box">
-              <Tabs selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
-                <TabList selectedIndex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
+              <Tabs selectedindex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
+                <TabList selectedindex={this.state.tabIndex} onSelect={tabIndex => this.setState({ tabIndex })}>
                     <Tab>text</Tab>
                     <Tab>tweet</Tab>
                     <Tab>url</Tab>
@@ -238,29 +249,24 @@ class App extends Component {
                 </TabList>
                 <TabPanel>
                 <div className="input-Box">
-                    <p>Type words below to generate new text from your words.</p>
-                    <p>Note: the more words the better.</p>
-                    <textArea className="input" placeholder='enter text here' value={this.state.inputTextValue}
+                    <textarea className="input" placeholder='enter text here' value={this.state.inputTextValue}
                         onChange={e => this.setState({ inputTextValue: e.target.value })}
                         onSubmit={e => this.handleSubmit(e)}>
-                    </textArea>
+                    </textarea>
                     <button onClick={this.submitText} type="submit">Submit</button>
                 </div>
                 </TabPanel>
                 <TabPanel>
                 <div className="input-Box">
-                    <p>Type a twitter user's handle to generate text based on their tweets.</p>
                     <input className="inputUrl" value={this.state.handleValue}
                         onChange={e => this.setState({ handleValue: e.target.value })}
                         onSubmit={e => this.handleSubmit(e)}>
                     </input>
-                    <button type="submit">Submit</button>
+                    <button onClick={this.submitHandle} type="submit">Submit</button>
                 </div>
                 </TabPanel>
                 <TabPanel>
                     <div className="input-Box">
-                        <p>Enter a web address to generate text.</p>
-                        <p>Note: Address must start with "http" or "https".</p>
                         <input className="inputUrl" value={this.state.urlValue}
                             onChange={e => this.setState({ urlValue: e.target.value })}
                             onSubmit={e => this.handleSubmit(e)}>
@@ -270,10 +276,8 @@ class App extends Component {
                 </TabPanel>
                 <TabPanel>
                     <div className="input-Box">
-                        <p>Select an author (or authors) to generate text based on that author's style.</p>
-                        <p>Note: Some authors may take some time generate.</p>
                         <div>
-                          <input type="radio" name="author" id="grimm" value="grimm" onChange={e => this.setState({ authorValue: e.target.value })} checked></input>
+                          <input type="radio" name="author" id="grimm" value="grimm" onChange={e => this.setState({ authorValue: e.target.value })}/>
                           <label htmlFor="grimm">The Brothers Grimm</label>
                         </div>
                         <div>
@@ -288,6 +292,7 @@ class App extends Component {
                     </div>
                 </TabPanel>
             </Tabs>
+            </div>
             </div>
             </div>
         </div>
