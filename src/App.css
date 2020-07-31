@@ -9,9 +9,28 @@
   /* overflow: hidden; */
 }
 
+.frame{
+    background-image: url("https://media.giphy.com/media/k4ZItrTKDPnSU/source.gif");
+    background-repeat: no-repeat;
+    background-color: blue;
+    width: 78%;
+    height: 100px;
+    align-self: center;
+    align-content: center;
+}
+
+.buttons{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
 button{
-    width:20vh;
+    width:40vw;
     height:15vh;
+    min-width:30px;
+    min-height:40px;
+
     max-width: 150px;
     max-height: 40px;
     opacity: .8;
@@ -20,7 +39,10 @@ button{
     background-color: darkblue;
     border-color: lightblue;
     border-style: solid;
-    font-size: 3vh;
+    /* font-size: 3vh; */
+    font-size: 1em;
+
+
     margin-top: 2vh;
 }
 
@@ -32,7 +54,7 @@ button:hover{
 
 .boxes {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   /* flex-direction: row; */
   /* width: 100%; */
   justify-content: space-around;
@@ -44,44 +66,98 @@ button:hover{
   /* margin: auto; */
     /* bottom:auto; */
 
+    margin:5vw;
+    padding: 5vw;
 
 }
 
 .input-Box{
+    position: absolute;
     display: flex;
     flex-direction: column;
     /* flex-direction: row; */
-    /* width: 100%; */
+
+    /* height:50%; */
+    width:78%;
+    bottom: 15%;
+    align-self: center;
+
+    /* margin-left: 3vw; */
     justify-content: space-between;
+    /* align-self: center; */
+    max-width: 500px;
+
 }
 
 .input{
-    width: 40vw;
-    height: 50vh;
+    /* width: 40vw;
+    height: 50vh; */
     outline:none;
     /* border-color: lightblue;
     border-style: solid;
     border-width: medium; */
+
 }
 
 .output-Box{
-    width: 50vw;
-    height: 95vh;
-    /* border-color: lightblue;
-    border-style: solid; */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: absolute;
+    bottom: 35vh; /*40%*/
+    height:50vh; /*50%*/
+    width:78%;
+    align-self: center;
+
+    max-width: 500px;
+    /* background-color: red; */
+
+    border-color: lightgrey;
+    border-style: solid;
+    border-width: thin;
     overflow: scroll;
-    font-size: 3vh;
+    padding: .5em;
+
+    font-size: 1.5em;
+
 }
 
 .output{
     font: normal;
     line-height: 1.6;
     letter-spacing: 1px;
-    margin:3vw;
-    padding: 3vw;
+    /* margin:3vw;
+    padding: 3vw; */
     /* border-radius: 1px;
     border-color: grey;
     border-width: thin; */
+}
+
+.tweetButton{
+    align-self:flex-end;
+    margin-top: 25px;
+    margin-bottom: 10px;
+
+    /* position: absolute;
+    right:2%;
+    bottom: 40vh; /*40%*/
+
+    /* bottom: 100%; */
+
+    /* width:20vw;
+    height:20vw;
+    max-width: 150px;
+    max-height: 150px;
+
+    border-radius: 100px; */
+
+    /* opacity: .8;
+    color: lightblue;
+    background-color: darkblue;
+    border-color: lightblue;
+    border-style: solid;
+    font-size: 3vh;
+    margin-top: 2vh; */
 }
 
 @media only screen and (min-width: 1000px){
@@ -93,6 +169,6 @@ button:hover{
 @media only screen and (min-height: 1000px){
     button{
         font-size: 2vh;
-        margin-bottom: 5vh;
+        /* margin-bottom: 5vh; */
     }
 }

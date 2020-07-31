@@ -1,14 +1,24 @@
 .Error{
-    color: white;
+    /* color: white; */
     text-align: center;
-    margin: 40px;
-    max-width: 700px;
-    line-height: 50px;
-    font-size: 12px;
+    /* margin: 40px; */
+    /* max-width: 700px; */
+    /* line-height: 50px; */
+    /* font-size: 12px; */
+    /* background-color: blue;
+    color:red; */
+    /* align-content: center; */
+    /* align-self: center; */
+    /* background-color: blue; */
 }
 
 .Loading{
-    margin-left: auto;
     max-width:100%;
     max-height:100%;
+}
+
+@media only screen and (max-height: 414px){
+    .Loading{
+        margin-top: -15vh;
+    }
 }
