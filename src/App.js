@@ -71,7 +71,6 @@ class App extends Component {
   }
 
   submitHandle(){
-      console.log("hey")
       this.setState({isLoading:true})
       this.setState({error:undefined})
       const handle = this.state.handleValue
@@ -179,7 +178,6 @@ class App extends Component {
   }
 
   getRandHandleAndSubmit(){
-      console.log("hey")
       this.setState({error:undefined})
       const backend = 'https://re-tweet.herokuapp.com/api/v1/rand-handle'
       fetch(backend).then(res => {
