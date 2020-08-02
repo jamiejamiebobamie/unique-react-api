@@ -29,5 +29,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "app.js",
+  "repository": "git@github.com:jamiejamiebobamie/unique-react-api.git",
+  "author": "jamiejamiebobamie <jmccrory@vt.edu>",
+  "license": "MIT"
 }
