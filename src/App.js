@@ -202,16 +202,9 @@ class App extends Component {
                   headers: { 'Content-Type': 'application/json'},
                   body: JSON.stringify(data)
                   }
-              ).then(res => {
-        // Handle the response stream as JSON
-        return res.json()
-      }).then((json) => {
-          console.log(json)
-      }).catch((err) => {
-        console.log('-- Error fetching --')
-        console.log(err.message)
-        this.setState({isLoading:false})
-      })
+              ).catch((err) => {
+                  window.location.replace("https://twitter.com/retweeter_bot");
+              })
   }
 
     render(){
