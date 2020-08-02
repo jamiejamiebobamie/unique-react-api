@@ -9,11 +9,10 @@
     "react-tabs": "^3.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node app.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "node app.js",
     "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
   },
   "eslintConfig": {
