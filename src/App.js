@@ -197,8 +197,7 @@ class App extends Component {
 
   submitTweet(){
       const backend = 'https://re-tweet.herokuapp.com/api/v1/tweet'
-      const data = {"handle":this.state.handle,
-              "tweet":this.state.data }
+      const data = {"handle":this.state.handleValue, "tweet":this.state.data }
       // Get data from the API with fetch
       fetch(backend, {
                   method: 'POST',
@@ -207,9 +206,6 @@ class App extends Component {
                   }
               ).then(res => {
         // Handle the response stream as JSON
-        return res.json()
-      })
-      fetch(backend).then(res => {
         return res.json()
       }).then((json) => {
           console.log(json)
@@ -230,7 +226,7 @@ class App extends Component {
                             <div className="output">{this.state.data}</div>
                   }
                   {(this.state.isLoading || this.state.data==null) ? "":
-                  <button className="tweetButton" onClick={this.submitTweet} type="submit">Tweet it!</button>}
+                  <button className="tweetButton" onClick={this.submitTweet}>Tweet it!</button>}
                 </div>
                     <div className="input-Box">
                         <input className="inputUrl" value={this.state.handleValue}
