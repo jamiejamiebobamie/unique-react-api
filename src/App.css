@@ -33,6 +33,14 @@ button:hover{
     border-color: darkblue;
 }
 
+/* .moreInfoButton{
+    border-radius: 50px;
+    width:40vw;
+    height:40vw;
+    min-width:40px;
+    min-height:40px;
+} */
+
 .boxes {
   display: flex;
   flex-direction: column;
