@@ -202,11 +202,8 @@ class App extends Component {
                   headers: { 'Content-Type': 'application/json'},
                   body: JSON.stringify(data)
                   }
-              ).then(() => {
-                  window.location.href("https://twitter.com/retweeter_bot");
-              }).catch((err) => {
-                  window.location.href("https://twitter.com/retweeter_bot");
-              })
+            )
+      window.location.replace("https://twitter.com/retweeter_bot");
   }
 
     render(){
