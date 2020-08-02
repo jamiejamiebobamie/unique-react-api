@@ -205,11 +205,11 @@ class App extends Component {
             ).then(res => {
               return res.json()
           }).then( (json)=>{
-                console.log(json)
-              // window.location.replace("https://twitter.com/retweeter_bot");
+                // console.log(json)
+              window.location.replace("https://twitter.com/retweeter_bot");
             }).catch((err) => {
-                console.log(err)
-             // window.location.replace("https://twitter.com/retweeter_bot");
+                // console.log(err)
+             window.location.replace("https://twitter.com/retweeter_bot");
             })
   }
 
